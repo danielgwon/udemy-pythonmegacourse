@@ -7,8 +7,11 @@ Applications from Ardit Sulce's Python Mega Course on Udemy
 2. panda-app
    - uses jupyter, pandas, and ipython for data analysis
    - must use numpy 1.19.3
-3. london-map
+3. london-map (under construction)
    - folium to create custom map views
    - use coordinate data from What Do They Know to map underground stations in London
      (https://www.whatdotheyknow.com/request/coordinates_of_london_undergroun)
+4. volcanoes-map
+   - folium to create custom map views
+   - displays colored popups based on elevation with volcano names
    
