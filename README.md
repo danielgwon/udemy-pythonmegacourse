@@ -11,7 +11,8 @@ Applications from Ardit Sulce's Python Mega Course on Udemy
    - folium to create custom map views
    - use coordinate data from What Do They Know to map underground stations in London
      (https://www.whatdotheyknow.com/request/coordinates_of_london_undergroun)
-4. volcanoes-map
+4. volcanoes-population-map
    - folium to create custom map views
    - displays colored popups based on elevation with volcano names
+   - country colors correspond to population
    
