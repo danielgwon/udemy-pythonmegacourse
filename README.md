@@ -15,4 +15,6 @@ Applications from Ardit Sulce's Python Mega Course on Udemy
    - folium to create custom map views
    - displays colored popups based on elevation with volcano names
    - country colors correspond to population
+5. my-website
+   - basic personal website using Flask
    
