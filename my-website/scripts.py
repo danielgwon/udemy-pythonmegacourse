@@ -1,13 +1,17 @@
-from flask import Flask
+from flask import Flask, render_template
 
 # instantiate the class
 app=Flask(__name__)
 
 
-# ROUTES
+# -------------------------- ROUTES -----------------------------
 @app.route('/')
 def home():
-    return "Website content goes here!"
+    return render_template("home.html")
+
+@app.route('/about')
+def about():
+    return render_template("about.html")
 
 
 if __name__=='__main__':
