@@ -17,4 +17,5 @@ Applications from Ardit Sulce's Python Mega Course on Udemy
    - country colors correspond to population
 5. my-website
    - basic personal website using Flask
-   
+   - upgraded to python 3.9.1
+   - deployed to Heroku: https://gwon.herokuapp.com/
