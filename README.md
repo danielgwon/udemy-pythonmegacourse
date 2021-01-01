@@ -19,3 +19,6 @@ Applications from Ardit Sulce's Python Mega Course on Udemy
    - basic personal website using Flask
    - upgraded to python 3.9.1
    - deployed to Heroku: https://gwon.herokuapp.com/
+6. library-gui
+   - created a gui using tkinter to provide a user interface to a library database of books
+   
