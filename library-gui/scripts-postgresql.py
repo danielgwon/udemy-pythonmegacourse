@@ -7,25 +7,31 @@
 """
 
 
-import sqlite3
+import psycopg2
 
+from dotenv import load_dotenv
+load_dotenv()
+import os
+
+# database credentials
+conn_creds = f"dbname={os.getenv('DBNAME')} user={os.getenv('USER')} password={os.getenv('PASSWORD')} host={os.getenv('HOST')} port={os.getenv('PORT')}"
 
 def createTable():
-    conn = sqlite3.connect("lite.db")
+    conn = psycopg2.connect(conn_creds)
     cur = conn.cursor()
     cur.execute("CREATE TABLE IF NOT EXISTS store (item TEXT, quantity INTEGER, price REAL)")
     conn.commit()
     conn.close()
 
 def insert(item, quantity, price):
-    conn = sqlite3.connect("lite.db")
+    conn = psycopg2.connect(conn_creds)
     cur = conn.cursor()
-    cur.execute("INSERT INTO store VALUES (?, ?, ?)", (item, quantity, price))
+    cur.execute("INSERT INTO store VALUES (%s, %s, %s)", (item, quantity, price))   # note traditional string formatting (%s, % (item...)) is prone to SQL injections
     conn.commit()
     conn.close()
 
 def view():
-    conn = sqlite3.connect("lite.db")
+    conn = psycopg2.connect(conn_creds)
     cur = conn.cursor()
     cur.execute("SELECT * FROM store")
     rows = cur.fetchall()
@@ -33,19 +39,24 @@ def view():
     return rows     # returned as a list
 
 def delete(item):
-    conn = sqlite3.connect("lite.db")
+    conn = psycopg2.connect(conn_creds)
     cur = conn.cursor()
-    cur.execute("DELETE FROM store WHERE item=?", (item,))
+    cur.execute("DELETE FROM store WHERE item=%s", (item,))
     conn.commit()
     conn.close()
 
 def update(quantity, price, item):
-    conn = sqlite3.connect("lite.db")
+    conn = psycopg2.connect(conn_creds)
     cur = conn.cursor()
-    cur.execute("UPDATE store SET quantity=?, price=? WHERE item=?", (quantity, price, item))
+    cur.execute("UPDATE store SET quantity=%s, price=%s WHERE item=%s", (quantity, price, item))
     conn.commit()
     conn.close()
 
-# delete("Wine Glass")
-update(8, 5.00, "Water Glass")
+createTable()
+# insert("Apple", 12, 0.99)
+# delete("Apple")
+update(11, 0.99, "Apple")
 print(view())
+# delete("Wine Glass")
+# update(8, 5.00, "Water Glass")
+# print(view())
