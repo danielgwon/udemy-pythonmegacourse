@@ -16,7 +16,57 @@ from tkinter import *
 import backend
 
 
+def getSelectedRow(event):
+    global selectedTuple
+    index = output.curselection()
+    selectedTuple = output.get(index)
+
+    # output in input fields
+    titleInput.delete(0, END)
+    titleInput.insert(END, selectedTuple[1])
+    authorInput.delete(0, END)
+    authorInput.insert(END, selectedTuple[2])
+    yearInput.delete(0, END)
+    yearInput.insert(END, selectedTuple[3])
+    ISBNInput.delete(0, END)
+    ISBNInput.insert(END, selectedTuple[4])
+
+
+def viewCommand():
+
+    # clear prior displayed data
+    output.delete(0, END)
+
+    # fetch and output new data
+    rows = backend.view()
+    for row in rows:
+        output.insert(END, row)
+
+
+def searchCommand():
+    output.delete(0, END)
+    rows = backend.search(titleText.get(), authorText.get(), yearText.get(), ISBNText.get())
+    for row in rows:
+        output.insert(END, row)
+
+
+def addCommand():
+    backend.insert(titleText.get(), authorText.get(), yearText.get(), ISBNText.get())
+    output.delete(0, END)
+    output.insert(END, (titleText.get(), authorText.get(), yearText.get(), ISBNText.get()))
+
+
+def updateCommand():
+    backend.update(selectedTuple[0], titleText.get(), authorText.get(), yearText.get(), ISBNText.get())
+
+
+def deleteCommand():
+    backend.delete(selectedTuple[0])
+
+
 window = Tk()
+
+window.wm_title("Bookstore")
 
 # Labels
 titleLabel = Label(window, text="Title")
@@ -49,19 +99,20 @@ scrollBar = Scrollbar(window)
 scrollBar.grid(row=3, column=2, rowspan=6)
 output.configure(yscrollcommand=scrollBar.set)
 scrollBar.configure(command=output.yview)
+output.bind('<<ListboxSelect>>', getSelectedRow)
 
 # Buttons
-viewButton = Button(window, text="View all", width=12)
+viewButton = Button(window, text="View all", width=12, command=viewCommand)
 viewButton.grid(row=2, column=3)
-searchButton = Button(window, text="Search Entry", width=12)
+searchButton = Button(window, text="Search Entry", width=12, command=searchCommand)
 searchButton.grid(row=3, column=3)
-addButton = Button(window, text="Add entry", width=12)
+addButton = Button(window, text="Add entry", width=12, command=addCommand)
 addButton.grid(row=4, column=3)
-updateButton = Button(window, text="Update", width=12)
+updateButton = Button(window, text="Update", width=12, command=updateCommand)
 updateButton.grid(row=5, column=3)
-deleteButton = Button(window, text="Delete", width=12)
+deleteButton = Button(window, text="Delete", width=12, command=deleteCommand)
 deleteButton.grid(row=6, column=3)
-closeButton = Button(window, text="Close", width=12)
+closeButton = Button(window, text="Close", width=12, command=window.destroy)
 closeButton.grid(row=7, column=3)
 
 
