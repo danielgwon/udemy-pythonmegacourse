@@ -18,18 +18,25 @@ import backend
 
 def getSelectedRow(event):
     global selectedTuple
-    index = output.curselection()
-    selectedTuple = output.get(index)
 
-    # output in input fields
-    titleInput.delete(0, END)
-    titleInput.insert(END, selectedTuple[1])
-    authorInput.delete(0, END)
-    authorInput.insert(END, selectedTuple[2])
-    yearInput.delete(0, END)
-    yearInput.insert(END, selectedTuple[3])
-    ISBNInput.delete(0, END)
-    ISBNInput.insert(END, selectedTuple[4])
+    try:
+        index = output.curselection()[0]
+        selectedTuple = output.get(index)
+
+        # output in input fields
+        titleInput.delete(0, END)
+        titleInput.insert(END, selectedTuple[1])
+        authorInput.delete(0, END)
+        authorInput.insert(END, selectedTuple[2])
+        yearInput.delete(0, END)
+        yearInput.insert(END, selectedTuple[3])
+        ISBNInput.delete(0, END)
+        ISBNInput.insert(END, selectedTuple[4])
+    except IndexError:
+        print("Nothing selected!")
+        pass
+
+
 
 
 def viewCommand():
