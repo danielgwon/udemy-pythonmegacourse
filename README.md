@@ -25,3 +25,4 @@ Applications from Ardit Sulce's Python Mega Course on Udemy
    - created executable using pyinstaller (ignored)
 7. bank-account
    - read a balance from a txt file and manipulate the value within a parent Account or child Checking class
+   - incorporate inheritance with Checking (child) and Account (parent)
