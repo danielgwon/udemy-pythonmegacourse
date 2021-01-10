@@ -23,4 +23,5 @@ Applications from Ardit Sulce's Python Mega Course on Udemy
    - created a gui using tkinter to provide a user interface to a library database of books
    - connects to local PostgreSQL database using psycopg2
    - created executable using pyinstaller (ignored)
-7. 
+7. bank-account
+   - read a balance from a txt file and manipulate the value within a parent Account or child Checking class
