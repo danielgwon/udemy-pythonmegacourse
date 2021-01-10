@@ -13,7 +13,10 @@ Close
 """
 
 from tkinter import *
-import backend
+from backend import Database
+
+
+database = Database("books.db")
 
 
 def getSelectedRow(event):
@@ -45,30 +48,30 @@ def viewCommand():
     output.delete(0, END)
 
     # fetch and output new data
-    rows = backend.view()
+    rows = database.view()
     for row in rows:
         output.insert(END, row)
 
 
 def searchCommand():
     output.delete(0, END)
-    rows = backend.search(titleText.get(), authorText.get(), yearText.get(), ISBNText.get())
+    rows = database.search(titleText.get(), authorText.get(), yearText.get(), ISBNText.get())
     for row in rows:
         output.insert(END, row)
 
 
 def addCommand():
-    backend.insert(titleText.get(), authorText.get(), yearText.get(), ISBNText.get())
+    database.insert(titleText.get(), authorText.get(), yearText.get(), ISBNText.get())
     output.delete(0, END)
     output.insert(END, (titleText.get(), authorText.get(), yearText.get(), ISBNText.get()))
 
 
 def updateCommand():
-    backend.update(selectedTuple[0], titleText.get(), authorText.get(), yearText.get(), ISBNText.get())
+    database.update(selectedTuple[0], titleText.get(), authorText.get(), yearText.get(), ISBNText.get())
 
 
 def deleteCommand():
-    backend.delete(selectedTuple[0])
+    database.delete(selectedTuple[0])
 
 
 window = Tk()
