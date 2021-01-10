@@ -22,3 +22,5 @@ Applications from Ardit Sulce's Python Mega Course on Udemy
 6. library-gui
    - created a gui using tkinter to provide a user interface to a library database of books
    - connects to local PostgreSQL database using psycopg2
+   - created executable using pyinstaller (ignored)
+7. 
