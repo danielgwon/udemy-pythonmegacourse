@@ -32,6 +32,8 @@ class Account:
 
 
 class Checking(Account):
+    """This class generates a checking account object"""
+    type = "checking"
 
     def __init__(self, filepath):
         super().__init__(filepath)
@@ -43,6 +45,25 @@ class Checking(Account):
 
 
 # MANUAL TESTS - Checking
-# c = Checking("balance.txt")
-# c.transfer(110)
-# print(c.getBalance())
+c = Checking("balance.txt")
+c.transfer(110)
+print(c.getBalance())
+print(c.type)
+print(c.__doc__)
+
+
+"""
+GLOSSARY
+
+Class
+Object instance
+Instance variable
+Class variable
+Doc strings
+Data member
+Constructor
+Methods
+Instantiation
+Inheritance
+Attributes
+"""
