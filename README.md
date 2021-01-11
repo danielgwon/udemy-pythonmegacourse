@@ -26,3 +26,6 @@ Applications from Ardit Sulce's Python Mega Course on Udemy
 7. bank-account
    - read a balance from a txt file and manipulate the value within a parent Account or child Checking class
    - incorporate inheritance with Checking (child) and Account (parent)
+8. mobile-app
+   - developed using kivy
+   
