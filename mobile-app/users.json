@@ -1,17 +1,1 @@
-{
-    "user1": {
-        "username": "user1",
-        "password": "password1",
-        "created": "2020-07-07 00:16:28.293901"
-    },
-    "user2": {
-        "username": "user2",
-        "password": "password2",
-        "created": "2020-07-07 00:28:07.315781"
-    },
-    "dgwon": {
-        "username": "dgwon",
-        "password": "pw1234",
-        "created": "2021-01-11 11-27-35.388686"
-    }
-}
+{"user1": {"username": "user1", "password": "password1", "created": "2020-07-07 00:16:28.293901"}, "user2": {"username": "user2", "password": "password2", "created": "2020-07-07 00:28:07.315781"}, "dgwon": {"username": "dgwon", "password": "pw1234", "created": "2021-01-11 11-27-35.388686"}, "dgwon2": {"username": "dgwon2", "password": "pw12345", "created": "2021-01-11 11-41-45.331057"}, "dgwon3": {"username": "dgwon3", "password": "pw123456", "created": "2021-01-11 11-43-27.067388"}, "": {"username": "", "password": "", "created": "2021-01-11 11-46-14.738969"}, "dgwon5": {"username": "dgwon5", "password": "pw29387456", "created": "2021-01-11 11-48-26.571092"}}

@@ -10,10 +10,19 @@ Builder.load_file('design.kv')
 
 class LoginScreen(Screen):
     def signUp(self):
-        self.manager.current = "signup_screen"
+        self.manager.current = "signupScreen"
+    
+    def login(self, username, password):
+        with open("users.json", 'r') as readFile:
+            users = json.load(readFile)
+        
+        if username not in users and users[username]['password'] != password:
+            print("Invalid username and/or password")
+        else:
+            self.manager.current = "loginScreenSuccess"
 
 
-class SignUpScreen(Screen):
+class SignupScreen(Screen):
     def addUser(self, username, password):
         with open("users.json", 'r') as readFile:
             users = json.load(readFile)
@@ -33,6 +42,23 @@ class SignUpScreen(Screen):
         # update the directory
         with open("users.json", 'w') as writeFile:
             json.dump(users, writeFile)
+        
+        self.manager.current = "signupScreenSuccess"
+
+
+class SignupScreenSuccess(Screen):
+    def returnToLogin(self):
+        self.manager.transition.direction = 'right'
+        self.manager.current = "loginScreen"
+        self.manager.transition.direction = 'left'  # use left as default
+
+
+class LoginScreenSuccess(Screen):
+    def logout(self):
+        self.manager.transition.direction = 'right'
+        self.manager.current = "loginScreen"
+        self.manager.transition.direction = 'left'
+
 
 
 class RootWidget(ScreenManager):

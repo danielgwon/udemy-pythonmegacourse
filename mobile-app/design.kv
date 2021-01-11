@@ -1,3 +1,4 @@
+
 <LoginScreen>:
     GridLayout:
         cols: 1
@@ -6,11 +7,14 @@
             Label:
                 text: "User Login"
             TextInput:
+                id: un
                 hint_text: "Username"
             TextInput:
+                id: pw
                 hint_text: "Password"
             Button:
                 text: "Login"
+                on_press: root.login(root.ids.un.text, root.ids.pw.text)
         GridLayout:
             cols: 2
             Button:
@@ -19,7 +23,7 @@
                 text: "Sign Up"
                 on_press: root.signUp()
 
-<SignUpScreen>:
+<SignupScreen>:
     GridLayout:
         cols: 1
         Label:
@@ -34,8 +38,36 @@
             text: "Submit"
             on_press: root.addUser(root.ids.un.text, root.ids.pw.text)
 
+<SignupScreenSuccess>:
+    GridLayout:
+        cols: 1
+        Label:
+            text: "Sign Up Successful!"
+        Button:
+            text: "Login page"
+            on_press: root.returnToLogin()
+
+<LoginScreenSuccess>:
+    GridLayout:
+        cols: 1
+        Button:
+            text: "Logout"
+            on_press: root.logout()
+        Label:
+            text: "How do you feel?"
+        TextInput:
+            hint_text: "e.g., happy, sad, excited, nervous, ..."
+        Button:
+            text: "Let's hear it"
+        Label:
+            text: ""
+
 <RootWidget>:
     LoginScreen:
-        name: "login_screen"
-    SignUpScreen:
-        name: "signup_screen"
+        name: "loginScreen"
+    SignupScreen:
+        name: "signupScreen"
+    SignupScreenSuccess:
+        name: "signupScreenSuccess"
+    LoginScreenSuccess:
+        name: "loginScreenSuccess"
